@@ -22,7 +22,7 @@
       <div>
         <label for="email">email input type: </label>
         <input type="email" id="email" name="email">
-        <error-output class="email-error" for="text"></error-output>
+        <error-output class="email-error" for="email"></error-output>
       </div>
       <div>
         <label for="url">url input type: </label>
@@ -31,6 +31,7 @@
       <div>
         <label for="number">number input type: </label>
         <input type="number" id="number" name="number">
+        <error-output class="number-error" for="number"></error-output>
       </div>
       <div>
         <label for="tel">tel input type: </label>
@@ -55,6 +56,27 @@
       </div>
     </form>
     <script>
+        //Mobile-Validation
+        const number = document.querySelector('#number');
+        const numberError = document.querySelector('.number-error');
+        text.addEventListener('input',function() {
+            let numberRegex = RegexExp('^91//s[6789]{1}[0-9]{9}$');
+            if(numberRegex.test(number.value))
+            numberError.textContent = "";
+            else numberError.textContent = "Number is Incorrect"
+        });
+
+        //Email_ID - Validation
+        const email = document.querySelector('#email');
+        const emailError = document.querySelector('.email-error');
+        text.addEventListener('input',function() {
+            let emailRegex = RegexExp('^[a-z]{1,}(.[a-z]*)*@[a-z]{1,}.co(.in)?$');
+            if(emailRegex.test(email.value))
+            emailError.textContent = "";
+            else emailError.textContent = "Email Id is Incorrect"
+        });
+
+        //Name-Validation
         const text = document.querySelector('#text');
         const textError = document.querySelector('.text-error');
         text.addEventListener('input',function() {
@@ -63,15 +85,6 @@
             textError.textContent = "";
             else textError.textContent = "Name is Incorrect"
         });
-        const email = document.querySelector('#email');
-        const emailError = document.querySelector('.email-error');
-        text.addEventListener('input',function() {
-            let nameRegex = RegexExp('^[a-z]{1,}(.[a-z]*)*@[a-z]{1,}.co(.in)?$');
-            if(nameRegex.test(email.value))
-            emailError.textContent = "";
-            else emailError.textContent = "Email Id is Incorrect"
-        });
-
         const salary = document.querySelector('#salary');
         const output = document.querySelector('.salary-output');
         output.textContent = salary.value;
